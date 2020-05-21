@@ -43,6 +43,12 @@ Delete pod
 ```ssh
 $ kubectl delete pod redis-pod
 ```
+
+listing pod dari namespace yang berbeda
+```ssh
+$ kubectl get pods --namespace=kube-system
+$ kubectl create pod pod-definition.yaml --namespace=dev
+```
 ## Replica Controller
 '''ssh
 $ kubectl create -f rc-definition.yml
@@ -73,9 +79,27 @@ $ kubectl get pods
 
 $ kubectl get all
 
+
 $ kubectl describe deployments.apps fronted-deployment | grep -i image
 $ kubectl apply -f deployment-definition.yaml
 
 $ kubectl create deployment httpd-frontend --image=httpd:2.4-alpine
 $ kubectl scale deployment httpd-frontend --replicas=3
+```
+
+## Namespace
+```ssh
+$ kubectl create -f namespace-dev-definition.yaml
+or
+$ kubectl create namespace dev
+$ kubectl get pods --namespace=dev
+
+merubah namespace default menjadi dev
+$ kubectl config set-context $(kubectl config current-context) --namespace=dev
+
+listing all pods untuk seluruh all namespace
+$ kubectl get pods --all-namespaces
+
+Limit quota setting
+$ kubectl create -f compute-quota.yaml 
 ```
