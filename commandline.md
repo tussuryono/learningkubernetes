@@ -1,3 +1,49 @@
+## Pods
+Checking jumlah pod yang aktif / verifikasi creating pod
+```ssh
+$ kubectl get pods
+```
+
+Create pod
+```ssh
+$ kubectl run nginx --image=nginx --generator=run-pod/v1
+```
+
+Detail pod
+```ssh
+$ kubectl get pods -o wide
+```
+
+Deskripsi pod
+```ssh
+$ kubectl describe pod nginx
+```
+
+Menghapus pod
+```ssh
+$ kubectl delete pod nginx
+```
+
+create pod menggunakan yaml file
+```ssh
+$ kubectl create -f 01-nginx-pod-definition.yaml
+```
+
+Implementasi hasil editing file yaml
+```ssh
+$ kubectl apply -f 01-nginx-pod-definition.yaml
+```
+
+Untuk editing direct bisa menngunakan command
+```ssh
+$ kubectl edit pod nginx
+```
+
+Delete pod
+```ssh
+$ kubectl delete pod redis-pod
+```
+
 # Replica Sets
 ```ssh
 $ kubectl create -f 01-nginx-replicaset-definition.yml
